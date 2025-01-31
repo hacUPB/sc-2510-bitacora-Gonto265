@@ -115,3 +115,44 @@ M=D
 
 // 11.
 
+// * Con este programa se está creando un ciclo de sustracción de una unidad al valor almacenado en i gracias alos saltos de operación y el label LOOP, esto sucederá hata que i tome el valor de 0, pues el label CONT redirigirá el orden de operaciones.
+
+// * La variable i está ubicada en la memoria RAM en la dirección 16.
+
+// * 
+
+// * La primera instrucción se refiere a @1000,  el cual está almacenada en la memoria ROM en la posición 0.
+
+// * CONT y LOOP son labels que permiten redirigir el flujo de operaciones.
+
+// * La diferéncia entre los símbolos i y CONT es que i es una variable y CONT es un label.
+
+// 12.
+
+@R1
+D=M
+@R2
+D=D+M
+@69
+D=D+A 
+@R4
+M=D
+
+// 13.
+
+(LOOP)
+@R0
+D=M
+@CONT
+D;JGE
+@R1
+D=1
+M=M-D
+@LOOP
+0;JMP
+(CONT)
+@R1
+M=1
+@LOOP
+0;JMP
+
