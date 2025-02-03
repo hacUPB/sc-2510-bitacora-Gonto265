@@ -84,7 +84,7 @@ M=D
 
 // * La variable i está ubicada en la memoria RAM en la dirección 16.
 
-// * 
+// * Este comentario no se encuentra almacenado en ninguna memoria de la CPU gracias al software compilador.
 
 // * La primera instrucción se refiere a @1000,  el cual está almacenada en la memoria ROM en la posición 0.
 
@@ -160,7 +160,41 @@ M=M+1
 
 // 16.
 
-// * Este programa asigna un valor diferente al sumar valor por valor de cada espacio en un array de 10 posiciones.
+@100
+D=A
+@arr
+M=D 
+@10
+D=A
+@R1
+M=D
+@sum
+M=0 
+@j 
+M=0 
+(LOOP)
+@j 
+D=M
+@R1
+D=D-M
+@END
+D;JEQ
+@arr
+D=M
+@j
+A=D+M
+D=M 
+@sum 
+M=D+M
+@j
+M=M+1
+@LOOP
+0;JMP
+(END)
+@END
+0;JMP
+
+// * Este programa suma un total, recorriendo valor por valor en un array de 10 espacios.
 
 // * La dirección base de arr está ubicado en la memoria RAM en la direccion 16.
 
