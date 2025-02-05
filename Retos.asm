@@ -213,6 +213,21 @@ D;JEQ
 
 // 18.
 
+// * (Y)
+
+// 19.
+
+// * Este programa está adecuado para que al numero guardado en la posicion 16 (16384) se le sume 1 por iteración mientras que alguna tecla esté oprimida, si la tecla es soltada, la maquina empezará a restar 1 por iteración al numero acumulado, este proceso pudiendo ser interrumpido por presionar una tecla para seguir sumando.
+
+// 20.
+
+(LOOP)
+@24576
+D=M
+@100
+D=D-A
+@LOOP 
+D;JNE
 (draw)
 	// put bitmap location value in R12
 	// put code return address in R13
@@ -493,6 +508,3 @@ D;JEQ
 	@R13
 	A=M
 	D;JMP
-
-// 19.
-
