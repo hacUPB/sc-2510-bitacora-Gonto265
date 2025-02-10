@@ -1,12 +1,8 @@
-/*
-                                      _                                  
-                                     /_) _ _)_ o    o  _ ) _   _ )   /_(_
-                                    / / (_ (_  ( \) ( (_( (_( (_(       )
-*/
+// Acrividad 4.1
 
-// Actividad 4
+// Escribe un programa en lenguaje ensamblador que guarde en la posición 32 de la RAM un 100.
 
 @100
 D=A 
 @32
-M=D 
+M=D

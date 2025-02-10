@@ -1,11 +1,4 @@
-/*
-                                      _                              _ 
-                                     /_) _ _)_ o    o  _ ) _   _ )    )
-                                    / / (_ (_  ( \) ( (_( (_( (_(    /_
-*/
-
-/*
-Actividad 2
+# Actividad 2.1
 
 ### ¿Que es entonces un programa?
 
@@ -20,4 +13,3 @@ se referiere a un lenguaje de codigo el cual puede entender la CPU de forma dire
 
 - Se refiere al lenguaje de programación más básico, se compone de instrucciones muy específicas, 
 codificadas en formato binario, el cual puede leer y ejecutar inmediatamente la CPU.
-*/
