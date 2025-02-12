@@ -1,4 +1,4 @@
-// Acrividad 4.1
+// Actividad 4.1
 
 // Escribe un programa en lenguaje ensamblador que guarde en la posición 32 de la RAM un 100.
 

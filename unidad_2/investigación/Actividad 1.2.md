@@ -1,4 +1,4 @@
-# Actividad 1
+# Actividad 1.2
 
 ### ¿Qué es la entrada-salida mapeada a memoria?
 
