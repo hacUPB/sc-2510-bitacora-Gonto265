@@ -30,4 +30,4 @@ M=M+1
 @END
 0;JMP
 
-// Honestamente no se la diferencia.
+// 
