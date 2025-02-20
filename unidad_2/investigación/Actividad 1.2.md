@@ -2,8 +2,7 @@
 
 ### ¿Qué es la entrada-salida mapeada a memoria?
 
-- Se refiere a la técnica de mapear los registros de entrada/salida de un dispositivo a direcciones
-de memoria, de tal forma que se puedan acceder a ellos como si fueran celdas de memoria.
+- Se refiere a la técnica de mapear los registros de entrada/salida de un dispositivo a direcciones de memoria, de tal forma que se puedan acceder a ellos como si fueran celdas de memoria.
 
 ### ¿Cómo se implementa en la plataforma Hack?
 
@@ -11,8 +10,14 @@ de memoria, de tal forma que se puedan acceder a ellos como si fueran celdas de 
 
 ### Inventa un programa que haga uso de la entrada-salida mapeada a memoria.
 ```
-
+(LOOP1)
+@24576
+D=M
 @100
+D=D-A
+@LOOP1 
+D;JNE
+@SCREEN
 D=A
 @arr
 M=D
@@ -22,7 +27,7 @@ D=A
 M=D
 @i
 M=0
-(LOOP)
+(LOOP2)
 @i
 D=M
 @R1
@@ -33,10 +38,10 @@ D;JGE
 D=M
 @i
 A=D+M
-M=-1
+M=1
 @i 
 M=M+1
-@LOOP
+@LOOP2
 0;JMP
 (END)
 @END
