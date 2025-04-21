@@ -81,7 +81,7 @@ Analicemos juntos este código:
 
 * Dentro del archivo .h incluimos 5 metodos con diferentes funcionalidades.
 * El programa esta constantemente actualizando la imagen en pantalla en la cual se aparenta la aparición de un trazo circular mientras mueves el cursor, se va borrando a medida que vas trazando despues de alcanzar mas de 100 particulas. Al hacer click en la pantalla las particulas cambiaran de color aleatoriamente.
-* La función mouseMovedse actualiza constantemente mientras que el cursor se está moviendo.
+* La función mouseMoved se actualiza constantemente mientras que el cursor se está moviendo.
 * La función mousePressed devuelve un valor al hacer click con el mouse.
 * La función setup se activa solo una vez al iniciar el programa, con el fin de presentar las bases del programa.
 * La función update se actualiza constantemente sin condiciones.

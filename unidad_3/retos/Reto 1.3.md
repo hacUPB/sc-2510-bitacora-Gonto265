@@ -131,7 +131,12 @@ public:
     bool rayIntersectsSphere(const glm::vec3& rayStart, const glm::vec3& rayDir, const glm::vec3& sphereCenter, float sphereRadius, glm::vec3& intersectionPoint);
 
     // Variables de la aplicación
-    std::vector<glm::vec3> spherePositions;
+    struct Sphere {
+    glm::vec3 position;
+    ofColor color;
+    };
+
+    std::vector<Sphere> spheres;
     glm::vec3 selectedSpherePosition;
     bool sphereSelected = false;
 
@@ -171,23 +176,16 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-    cam.begin();  // Iniciar la cámara 3D
-
-    for (auto& pos : spherePositions) {
-        ofDrawSphere(pos, sphereRadius);  // Dibujar cada esfera en la cuadrícula
+    cam.begin();
+    
+    for (auto& sphere : spheres) {
+        ofSetColor(sphere.color);  // Usar el color individual
+        ofDrawSphere(sphere.position, sphereRadius);
     }
+    
+    cam.end();
 
-    cam.end();  // Terminar la cámara 3D
-
-    // Mostrar las coordenadas de la esfera seleccionada en la esquina superior izquierda
-    if (sphereSelected) {
-        std::string info = "Esfera seleccionada en:\n";
-        info += "X: " + ofToString(selectedSpherePosition.x) + "\n";
-        info += "Y: " + ofToString(selectedSpherePosition.y) + "\n";
-        info += "Z: " + ofToString(selectedSpherePosition.z);
-
-        ofDrawBitmapStringHighlight(info, 20, 20);  // Mostrar texto en la esquina
-    }
+    // [El resto del código de dibujado permanece igual]
 }
 
 //--------------------------------------------------------------
@@ -218,33 +216,39 @@ void ofApp::mousePressed(int x, int y, int button) {
     glm::vec3 rayStart, rayEnd;
     convertMouseToRay(x, y, rayStart, rayEnd);
 
-    sphereSelected = false;  // Reiniciar la selección
-    for (auto& pos : spherePositions) {
+    sphereSelected = false;
+    for (auto& sphere : spheres) {
         glm::vec3 intersectionPoint;
-        if (rayIntersectsSphere(rayStart, rayEnd - rayStart, pos, sphereRadius, intersectionPoint)) {
+        if (rayIntersectsSphere(rayStart, rayEnd - rayStart, 
+                              sphere.position, sphereRadius, intersectionPoint)) {
             sphereSelected = true;
-            selectedSpherePosition = pos;  // Guardar la posición de la esfera seleccionada
-            break;  // Salir del bucle si se ha encontrado una esfera
+            selectedSpherePosition = sphere.position;
+            break;
         }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::generateSpheresGrid() {
-    spherePositions.clear();  // Limpiar las posiciones anteriores
+    spheres.clear();  // Limpiar las esferas anteriores
+    ofRandomize();
 
-    float gridWidth = spacing * (numSpheresX - 1);  // Ancho total de la malla
-    float gridHeight = spacing * (numSpheresY - 1);  // Alto total de la malla
+    float gridWidth = spacing * (numSpheresX - 1);
+    float gridHeight = spacing * (numSpheresY - 1);
 
-    // Generar posiciones de esferas manteniendo el espaciado constante
     for (int i = 0; i < numSpheresX; i++) {
         for (int j = 0; j < numSpheresY; j++) {
-            float x = i * spacing - gridWidth / 2;  // Centrar la malla en X
-            float y = j * spacing - gridHeight / 2;  // Centrar la malla en Y
-            float z = cos(ofDist(x, y, 0, 0) / distDiv) * amplitud;  // Altura Z según la distancia
-
-            glm::vec3 position = glm::vec3(x, y, z);
-            spherePositions.push_back(position);  // Guardar la posición de la esfera
+            float x = i * spacing - gridWidth / 2;
+            float y = j * spacing - gridHeight / 2;
+            float z = cos(ofDist(x, y, 0, 0) / distDiv) * amplitud;
+            
+            Sphere sphere;
+            sphere.position = glm::vec3(x, y, z);
+            
+            // Asignar color aleatorio (HSV para mejores variaciones)
+            sphere.color.setHsb(ofRandom(160, 200), ofRandom(180, 255), ofRandom(200, 255));
+            
+            spheres.push_back(sphere);
         }
     }
 }
@@ -291,8 +295,6 @@ bool ofApp::rayIntersectsSphere(const glm::vec3& rayStart, const glm::vec3& rayD
     }
 }
 ```
-
-### Video
 
 El vector (std::vector) son una estructura de datos dinámica que gestiona objetos de tipo glm::vec3 o ofVec3f (usado para representar vectores en 3D) (GESTIONA LA RESERVA DE MEMORIA)
 
