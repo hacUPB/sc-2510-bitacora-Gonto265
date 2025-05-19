@@ -8,37 +8,37 @@ En esta actividad vas a experimentar con una aplicación interactiva y listas en
 #pragma once
 #include "ofMain.h"
 
-**class** Node {
-**public**:
-    **float** x, y;
+class Node {
+public:
+    float x, y;
     Node* next;
     
-    Node(**float** _x, **float** _y);
+    Node(float _x, float _y);
     ~Node();
 };
 
-**class** LinkedList {
-**public**:
+class LinkedList {
+public:
     Node* head;
     Node* tail;
-    **int** size;
+    int size;
 
     LinkedList();
     ~LinkedList();
     
-    **void** clear();
-    **void** addNode(**float** x, **float** y);
-    **void** update(**float** x, **float** y);
-    **void** display();
+    void clear();
+    void addNode(float x, float y);
+    void update(float x, float y);
+    void display();
 };
 
-**class** ofApp : **public** ofBaseApp {
-**public**:
+class ofApp : public ofBaseApp {
+public:
     LinkedList snake;
-    **void** setup();
-    **void** update();
-    **void** draw();
-    **void** keyPressed(**int** key);  // Nueva función para manejar el teclado
+    void setup();
+    void update();
+    void draw();
+    void keyPressed(int key);  // Nueva función para manejar el teclado
 };
 ```
 
@@ -164,7 +164,7 @@ Vas a reportar en tu bitácora de aprendizaje:
 
 ## Respuesta
 
-1. El código implementa una serpiente (snake) usando una lista enlazada. Los nodos son ada segmento de la serpiente. Tienen coordenadas (x, y) y puntero next para enlazar nodos.
+1. El código implementa una serpiente (snake) usando una lista enlazada. Los nodos son cada segmento de la serpiente. Tienen coordenadas (x, y) y puntero next para enlazar nodos.
 
 LinkedList gestiona el cuerpo de la serpiente, con punteros head (inicio) y tail (final). Métodos para añadir nodos (addNode), mover la serpiente (update), dibujar (display), y liberar memoria (clear).
 
@@ -220,7 +220,6 @@ Inserción/eliminación en O(n) (debe desplazar elementos).
 **Destructor ~LinkedList():**
 
 ```cpp
-Copy
 ~LinkedList() { clear(); } // Llama a clear() al destruir la lista
 ```
 

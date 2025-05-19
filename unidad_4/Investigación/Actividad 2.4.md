@@ -346,7 +346,6 @@ Solo necesita top.
 Ejemplo crítico:
 
 cpp
-Copy
 void dequeue() {
     if (front != nullptr) {
         Node* temp = front;
@@ -378,7 +377,6 @@ Reutiliza memoria sin asignaciones dinámicas frecuentes.
 Ejemplo:
 
 cpp
-Copy
 class CircularQueue {
     ofVec2f buffer[100];
     int head = 0, tail = 0;
